@@ -1,0 +1,82 @@
+{
+  "linear": {
+    "accuracy": 0.8396,
+    "seconds": 97.8
+  },
+  "rbf_scaling": [
+    {
+      "n": 2500,
+      "seconds": 0.2,
+      "accuracy": 0.8303,
+      "support_vectors": 1282
+    },
+    {
+      "n": 5000,
+      "seconds": 0.8,
+      "accuracy": 0.8468,
+      "support_vectors": 2186
+    },
+    {
+      "n": 10000,
+      "seconds": 3.1,
+      "accuracy": 0.8651,
+      "support_vectors": 3874
+    },
+    {
+      "n": 20000,
+      "seconds": 11.0,
+      "accuracy": 0.8758,
+      "support_vectors": 6848
+    }
+  ],
+  "tuning": {
+    "best": {
+      "C": 10,
+      "gamma": 0.03
+    },
+    "val_grid": [
+      [
+        0.82,
+        0.863,
+        0.777
+      ],
+      [
+        0.8528,
+        0.8718,
+        0.782
+      ],
+      [
+        0.8665,
+        0.867,
+        0.782
+      ]
+    ],
+    "train_grid": [
+      [
+        0.8329,
+        0.904,
+        0.997
+      ],
+      [
+        0.8796,
+        0.9795,
+        1.0
+      ],
+      [
+        0.9259,
+        0.9999,
+        1.0
+      ]
+    ]
+  },
+  "rbf_final": {
+    "accuracy": 0.8829,
+    "seconds": 34.6,
+    "train_images": 30000
+  },
+  "nystroem": {
+    "accuracy": 0.8803,
+    "seconds": 908.4,
+    "train_images": 60000
+  }
+}

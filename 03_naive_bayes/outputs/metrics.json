@@ -1,0 +1,207 @@
+{
+  "random_split": {
+    "MultinomialNB (counts)": {
+      "accuracy": 0.9879,
+      "spam_precision": 0.9846,
+      "spam_recall": 0.99,
+      "ham_lost": 45
+    },
+    "BernoulliNB (present/absent)": {
+      "accuracy": 0.9865,
+      "spam_precision": 0.9819,
+      "spam_recall": 0.99,
+      "ham_lost": 53
+    },
+    "ComplementNB (TF-IDF)": {
+      "accuracy": 0.9893,
+      "spam_precision": 0.9893,
+      "spam_recall": 0.9883,
+      "ham_lost": 31
+    },
+    "LogisticRegression (TF-IDF)": {
+      "accuracy": 0.9905,
+      "spam_precision": 0.9844,
+      "spam_recall": 0.9959,
+      "ham_lost": 46
+    },
+    "GaussianNB (2k counts)": {
+      "accuracy": 0.9248,
+      "spam_precision": 0.8731,
+      "spam_recall": 0.9859,
+      "ham_lost": 417
+    }
+  },
+  "scratch_agreement": 1.0,
+  "alpha": {
+    "0.0001": 0.9877,
+    "0.001": 0.9879,
+    "0.01": 0.9877,
+    "0.1": 0.9879,
+    "1.0": 0.987,
+    "10.0": 0.9839
+  },
+  "top_words": {
+    "spam": [
+      "pills",
+      "viagra",
+      "computron",
+      "cialis",
+      "voip",
+      "ooking",
+      "photoshop",
+      "wysak",
+      "ur",
+      "wiil",
+      "nbsp",
+      "href",
+      "materia",
+      "pharmacy",
+      "rolex"
+    ],
+    "ham": [
+      "kaminski",
+      "dynegy",
+      "ees",
+      "ena",
+      "dbcaps",
+      "mmbtu",
+      "hourahead",
+      "enron",
+      "ferc",
+      "enronxgate",
+      "xls",
+      "cera",
+      "sitara",
+      "enrononline",
+      "fastow"
+    ]
+  },
+  "leave_one_mailbox_out": {
+    "enron1": {
+      "emails": 4994,
+      "MultinomialNB": {
+        "accuracy": 0.964,
+        "spam_precision": 0.8997,
+        "spam_recall": 0.987,
+        "ham_lost": 161
+      },
+      "BernoulliNB": {
+        "accuracy": 0.9049,
+        "spam_precision": 0.7557,
+        "spam_recall": 0.9979,
+        "ham_lost": 472
+      },
+      "LogisticRegression": {
+        "accuracy": 0.9684,
+        "spam_precision": 0.9035,
+        "spam_recall": 0.9986,
+        "ham_lost": 156
+      }
+    },
+    "enron2": {
+      "emails": 5805,
+      "MultinomialNB": {
+        "accuracy": 0.9668,
+        "spam_precision": 0.8951,
+        "spam_recall": 0.9866,
+        "ham_lost": 173
+      },
+      "BernoulliNB": {
+        "accuracy": 0.9769,
+        "spam_precision": 0.9382,
+        "spam_recall": 0.9746,
+        "ham_lost": 96
+      },
+      "LogisticRegression": {
+        "accuracy": 0.969,
+        "spam_precision": 0.8988,
+        "spam_recall": 0.9913,
+        "ham_lost": 167
+      }
+    },
+    "enron3": {
+      "emails": 5256,
+      "MultinomialNB": {
+        "accuracy": 0.9861,
+        "spam_precision": 0.9588,
+        "spam_recall": 0.994,
+        "ham_lost": 64
+      },
+      "BernoulliNB": {
+        "accuracy": 0.9802,
+        "spam_precision": 0.9585,
+        "spam_recall": 0.9726,
+        "ham_lost": 63
+      },
+      "LogisticRegression": {
+        "accuracy": 0.9751,
+        "spam_precision": 0.9206,
+        "spam_recall": 0.9987,
+        "ham_lost": 129
+      }
+    },
+    "enron4": {
+      "emails": 5628,
+      "MultinomialNB": {
+        "accuracy": 0.9657,
+        "spam_precision": 0.9689,
+        "spam_recall": 0.985,
+        "ham_lost": 131
+      },
+      "BernoulliNB": {
+        "accuracy": 0.973,
+        "spam_precision": 0.9692,
+        "spam_recall": 0.9949,
+        "ham_lost": 131
+      },
+      "LogisticRegression": {
+        "accuracy": 0.9817,
+        "spam_precision": 0.9828,
+        "spam_recall": 0.9925,
+        "ham_lost": 72
+      }
+    },
+    "enron5": {
+      "emails": 3559,
+      "MultinomialNB": {
+        "accuracy": 0.9843,
+        "spam_precision": 0.9889,
+        "spam_recall": 0.9853,
+        "ham_lost": 24
+      },
+      "BernoulliNB": {
+        "accuracy": 0.9772,
+        "spam_precision": 0.987,
+        "spam_recall": 0.9757,
+        "ham_lost": 28
+      },
+      "LogisticRegression": {
+        "accuracy": 0.9902,
+        "spam_precision": 0.9945,
+        "spam_recall": 0.9894,
+        "ham_lost": 12
+      }
+    },
+    "enron6": {
+      "emails": 5221,
+      "MultinomialNB": {
+        "accuracy": 0.9807,
+        "spam_precision": 0.9822,
+        "spam_recall": 0.9913,
+        "ham_lost": 68
+      },
+      "BernoulliNB": {
+        "accuracy": 0.9799,
+        "spam_precision": 0.9786,
+        "spam_recall": 0.9939,
+        "ham_lost": 82
+      },
+      "LogisticRegression": {
+        "accuracy": 0.9837,
+        "spam_precision": 0.9835,
+        "spam_recall": 0.9942,
+        "ham_lost": 63
+      }
+    }
+  }
+}

@@ -11,8 +11,8 @@ tests pass, and every project includes one algorithm built from scratch in NumPy
 | # | Algorithm | Dataset | Status |
 |---|---|---|---|
 | 1 | Logistic Regression | Lending Club loans (2.26M) | **Done**: AUC 0.687 → 0.692 tuned; leakage demo 0.995 |
-| 2 | Support Vector Machines | Fashion-MNIST (70k images) | Planned |
-| 3 | Naive Bayes | Enron spam corpus (33k emails) | Planned |
+| 2 | Support Vector Machines | Fashion-MNIST (70k images) | **Done**: RBF 88.3% vs linear 84.0% |
+| 3 | Naive Bayes | Enron-Spam, original corpus (30k unique e-mails) | **Done**: 98.8%; found the popular Kaggle copy is broken |
 | 4 | K-Nearest Neighbours | Forest Covertype (581k) | Planned |
 | 5 | Decision Trees (classifier + regressor) | NYC Taxi trips | Planned |
 | 6 | Random Forest | Credit Card Fraud, ULB (284k) | Planned |

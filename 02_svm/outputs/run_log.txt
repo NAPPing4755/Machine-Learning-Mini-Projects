@@ -1,0 +1,10 @@
+train 60,000 images, test 10,000
+linear {'accuracy': 0.8396, 'seconds': 97.8}
+ rbf {'n': 2500, 'seconds': 0.2, 'accuracy': 0.8303, 'support_vectors': 1282}
+ rbf {'n': 5000, 'seconds': 0.8, 'accuracy': 0.8468, 'support_vectors': 2186}
+ rbf {'n': 10000, 'seconds': 3.1, 'accuracy': 0.8651, 'support_vectors': 3874}
+ rbf {'n': 20000, 'seconds': 11.0, 'accuracy': 0.8758, 'support_vectors': 6848}
+best {'C': 10, 'gamma': 0.03}
+rbf final {'accuracy': 0.8829, 'seconds': 34.6, 'train_images': 30000}
+nystroem {'accuracy': 0.8803, 'seconds': 908.4, 'train_images': 60000}
+saved to D:\AI Projects\ML_Mini_Projects\02_svm\outputs
