@@ -1,0 +1,10 @@
+# environment and caches
+.venv/
+__pycache__/
+.pytest_cache/
+*.pyc
+# full datasets are downloaded by each project; only small samples in <project>/data/ are committed
+_datasets/
+# credentials must never be committed
+kaggle.json
+.env
