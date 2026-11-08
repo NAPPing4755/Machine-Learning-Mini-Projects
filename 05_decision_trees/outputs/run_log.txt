@@ -1,0 +1,20 @@
+D:\AI Projects\ML_Mini_Projects\05_decision_trees\decision_trees.py:39: Pandas4Warning: Series.dt.dayofweek is deprecated and will be removed in a future version. Use Series.dt.day_of_week instead.
+  df["weekday"] = df["tpep_pickup_datetime"].dt.dayofweek  # 0 = Monday ... 6 = Sunday
+2,742,135 clean trips; removed: {'pickup outside January 2024': 18, 'duration not 1-180 minutes': 37104, 'distance not 0.1-100 miles': 38590, 'fare not $3-$500': 33143, 'missing passenger count / rate code': 113548, 'speed above 80 mph': 86}
+train 2,084,493  test 657,642
+baselines {'predict_mean': {'rmse': 11.848644271752612, 'mae': 8.183875666609357}, 'linear_regression': {'rmse': 6.954952045418245, 'mae': 4.750588894966899}}
+ depth {'depth': 1, 'leaves': 2, 'train_rmse': 8.685, 'test_rmse': 8.743}
+ depth {'depth': 2, 'leaves': 4, 'train_rmse': 7.078, 'test_rmse': 7.189}
+ depth {'depth': 4, 'leaves': 16, 'train_rmse': 6.266, 'test_rmse': 6.255}
+ depth {'depth': 6, 'leaves': 64, 'train_rmse': 5.895, 'test_rmse': 5.889}
+ depth {'depth': 8, 'leaves': 252, 'train_rmse': 5.637, 'test_rmse': 5.646}
+ depth {'depth': 10, 'leaves': 939, 'train_rmse': 5.432, 'test_rmse': 5.527}
+ depth {'depth': 14, 'leaves': 10608, 'train_rmse': 4.979, 'test_rmse': 5.416}
+ depth {'depth': 18, 'leaves': 85013, 'train_rmse': 4.339, 'test_rmse': 5.55}
+ depth {'depth': 24, 'leaves': 674350, 'train_rmse': 2.986, 'test_rmse': 6.126}
+ depth {'depth': 'full', 'leaves': 1950207, 'train_rmse': 0.718, 'test_rmse': 6.702}
+leaf sweep {1: 6.702, 10: 5.224, 50: 5.096, 200: 5.208, 1000: 5.431, 5000: 5.721}
+final {'depth': 14, 'rmse': 5.415751124769593, 'mae': 3.2202003502511247}
+ tip all trips, payment_type as a feature {'auc': 0.9395, 'tip_rate': 0.8108, 'rows': 657642, 'top_feature': 'payment_type'}
+ tip card trips only (honest) {'auc': 0.7096, 'tip_rate': 0.9548, 'rows': 558493, 'top_feature': 'fare_amount'}
+saved to D:\AI Projects\ML_Mini_Projects\05_decision_trees\outputs
