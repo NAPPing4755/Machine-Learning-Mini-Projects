@@ -16,7 +16,7 @@ tests pass, and every project includes one algorithm built from scratch in NumPy
 | 4 | K-Nearest Neighbours | Forest Covertype (581k) | **Done**: 96.5%; scaling made it worse, and why |
 | 5 | Decision Trees (classifier + regressor) | NYC Taxi trips (2.96M) | **Done**: RMSE 5.10 min; tip AUC 0.94 → 0.71 honest |
 | 6 | Random Forest | Credit Card Fraud, ULB (284k) | **Done**: PR-AUC 0.80; 72% of fraud € caught at 0.1% review |
-| 7 | AdaBoost | HIGGS boson, CERN/UCI | Planned |
+| 7 | AdaBoost | HIGGS (11M collisions, UCI) | **Done**: AUC 0.785; physics features 0.757 vs raw 0.620 |
 | 8 | Gradient Boosting | Rossmann store sales (1M+) | Planned |
 | 9 | XGBoost | Home Credit Default Risk (300k, 7 tables) | Planned |
 | 10 | Capstone: all algorithms | IEEE-CIS Fraud Detection | Planned |

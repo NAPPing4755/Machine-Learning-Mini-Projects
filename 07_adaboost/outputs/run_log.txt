@@ -1,0 +1,7 @@
+train 500,000  test 500,000  signal share 0.529
+stump {'auc': 0.5973, 'accuracy': 0.6089, 'feature': 'm_bb'}
+curve {'1': {'train': 0.598, 'test': 0.5973}, '10': {'train': 0.704, 'test': 0.7037}, '50': {'train': 0.7414, 'test': 0.7415}, '100': {'train': 0.7474, 'test': 0.7472}, '200': {'train': 0.756, 'test': 0.7558}, '400': {'train': 0.7616, 'test': 0.7614}, '800': {'train': 0.7669, 'test': 0.7667}}
+depth/rate {'depth1_lr0.1': 0.7357, 'depth1_lr0.5': 0.7585, 'depth1_lr1.0': 0.7603, 'depth2_lr0.1': 0.767, 'depth2_lr0.5': 0.7745, 'depth2_lr1.0': 0.7848, 'depth3_lr0.1': 0.7827, 'depth3_lr0.5': 0.7835, 'depth3_lr1.0': 0.7825}
+features {'21 low-level (raw)': 0.6199, '7 high-level (engineered)': 0.7572, 'all 28': 0.7745}
+scratch agreement 1.0 noise {'clean labels': {'adaboost_auc': 0.773, 'forest_auc': 0.801}, '10% flipped': {'adaboost_auc': 0.7744, 'forest_auc': 0.7993, 'weight_share_on_flipped': 0.1414}}
+saved to D:\AI Projects\ML_Mini_Projects\07_adaboost\outputs
