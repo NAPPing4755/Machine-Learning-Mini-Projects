@@ -15,7 +15,7 @@ tests pass, and every project includes one algorithm built from scratch in NumPy
 | 3 | Naive Bayes | Enron-Spam, original corpus (30k unique e-mails) | **Done**: 98.8%; found the popular Kaggle copy is broken |
 | 4 | K-Nearest Neighbours | Forest Covertype (581k) | **Done**: 96.5%; scaling made it worse, and why |
 | 5 | Decision Trees (classifier + regressor) | NYC Taxi trips (2.96M) | **Done**: RMSE 5.10 min; tip AUC 0.94 → 0.71 honest |
-| 6 | Random Forest | Credit Card Fraud, ULB (284k) | Planned |
+| 6 | Random Forest | Credit Card Fraud, ULB (284k) | **Done**: PR-AUC 0.80; 72% of fraud € caught at 0.1% review |
 | 7 | AdaBoost | HIGGS boson, CERN/UCI | Planned |
 | 8 | Gradient Boosting | Rossmann store sales (1M+) | Planned |
 | 9 | XGBoost | Home Credit Default Risk (300k, 7 tables) | Planned |
