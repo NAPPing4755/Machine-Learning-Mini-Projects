@@ -18,8 +18,8 @@ tests pass, and every project includes one algorithm built from scratch in NumPy
 | 6 | Random Forest | Credit Card Fraud, ULB (284k) | **Done**: PR-AUC 0.80; 72% of fraud € caught at 0.1% review |
 | 7 | AdaBoost | HIGGS (11M collisions, UCI) | **Done**: AUC 0.785; physics features 0.757 vs raw 0.620 |
 | 8 | Gradient Boosting | Rossmann store sales (1M store-days) | **Done**: RMSPE 0.121 vs 0.145 baseline; histograms 9x faster |
-| 9 | XGBoost | Home Credit Default Risk (300k, 7 tables) | Planned |
-| 10 | Capstone: all algorithms | IEEE-CIS Fraud Detection | Planned |
+| 9 | XGBoost | Home Credit Default Risk (307k applicants, 7 tables) | **Done**: AUC 0.790; history +0.020; flags gender as a fairness problem |
+| 10 | Capstone: all algorithms | IEEE-CIS Fraud Detection (590k) | Built and tested; full run pending |
 
 ## Setup (already done on this machine)
 

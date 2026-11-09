@@ -1,0 +1,119 @@
+{
+  "rows": {
+    "train": 215257,
+    "validation": 30751,
+    "test": 61503
+  },
+  "features": 351,
+  "employment_sentinel": 55374,
+  "main": {
+    "trees": 519,
+    "test_auc": 0.7904
+  },
+  "tables": {
+    "application only": {
+      "features": 127,
+      "trees": 493,
+      "test_auc": 0.7699
+    },
+    "+ credit bureau": {
+      "features": 188,
+      "trees": 381,
+      "test_auc": 0.7753
+    },
+    "+ all 6 history tables": {
+      "features": 351,
+      "trees": 519,
+      "test_auc": 0.7904
+    }
+  },
+  "params": {
+    "max_depth=3": {
+      "trees": 861,
+      "test_auc": 0.7911
+    },
+    "max_depth=6": {
+      "trees": 519,
+      "test_auc": 0.7904
+    },
+    "max_depth=9": {
+      "trees": 181,
+      "test_auc": 0.7868
+    },
+    "min_child_weight=1": {
+      "trees": 528,
+      "test_auc": 0.79
+    },
+    "min_child_weight=5": {
+      "trees": 519,
+      "test_auc": 0.7904
+    },
+    "min_child_weight=50": {
+      "trees": 515,
+      "test_auc": 0.792
+    },
+    "colsample_bytree=0.3": {
+      "trees": 541,
+      "test_auc": 0.7922
+    },
+    "colsample_bytree=0.6": {
+      "trees": 519,
+      "test_auc": 0.7904
+    },
+    "colsample_bytree=1.0": {
+      "trees": 335,
+      "test_auc": 0.7881
+    },
+    "subsample=0.5": {
+      "trees": 489,
+      "test_auc": 0.7871
+    },
+    "subsample=0.8": {
+      "trees": 519,
+      "test_auc": 0.7904
+    },
+    "subsample=1.0": {
+      "trees": 344,
+      "test_auc": 0.7903
+    },
+    "lambda=0.0": {
+      "trees": 353,
+      "test_auc": 0.7897
+    },
+    "lambda=1.0": {
+      "trees": 519,
+      "test_auc": 0.7904
+    },
+    "lambda=10.0": {
+      "trees": 451,
+      "test_auc": 0.7904
+    }
+  },
+  "imbalance": {
+    "none": {
+      "auc": 0.7904,
+      "brier": 0.0656,
+      "mean_predicted": 0.0781,
+      "true_rate": 0.0807
+    },
+    "scale_pos_weight=11": {
+      "auc": 0.7866,
+      "brier": 0.1598,
+      "mean_predicted": 0.3535,
+      "true_rate": 0.0807
+    }
+  },
+  "shap_top10": {
+    "EXT_SOURCE_MEAN": 0.3628000020980835,
+    "EXT_SOURCE_3": 0.11180000007152557,
+    "ORGANIZATION_TYPE": 0.10840000212192535,
+    "CODE_GENDER": 0.10779999941587448,
+    "TERM_YEARS": 0.10360000282526016,
+    "CREDIT_TO_GOODS": 0.1031000018119812,
+    "EXT_SOURCE_2": 0.10130000114440918,
+    "INST_PAID_LATE_DAYS_mean": 0.09860000014305115,
+    "AMT_ANNUITY": 0.09809999912977219,
+    "EXT_SOURCE_1": 0.08229999989271164
+  },
+  "scratch_max_prob_diff": 0.0030237905326071374
+}
