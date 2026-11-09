@@ -8,3 +8,7 @@ _datasets/
 # credentials must never be committed
 kaggle.json
 .env
+# Kaggle competition data may not be redistributed: samples for projects 8-10 are rebuilt locally (make_sample.py)
+08_gradient_boosting/data/
+09_xgboost/data/
+10_capstone/data/
