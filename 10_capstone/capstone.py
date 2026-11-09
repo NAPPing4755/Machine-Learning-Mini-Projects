@@ -37,10 +37,17 @@ OUTPUTS = HERE / "outputs"                                                    # 
 
 
 # ========================================================================= data
+def _read32(path):
+    """Read a CSV with every numeric column as float32 from the start (half the memory of float64)."""
+    head = pd.read_csv(path, nrows=1000)          # peek at the column types
+    dtypes = {c: "float32" for c in head.select_dtypes("number").columns if c != "TransactionID"}   # numbers -> 32-bit
+    return pd.read_csv(path, dtype=dtypes)        # text columns stay text
+
+
 def load(data_dir):
     """Transactions joined with device/identity info (only ~24% of transactions have it), sorted by time."""
-    t = pd.read_csv(data_dir / "train_transaction.csv")   # 394 columns: amount, card, address, C/D/M/V features
-    i = pd.read_csv(data_dir / "train_identity.csv")      # 41 columns: device type, browser, id_xx
+    t = _read32(data_dir / "train_transaction.csv")   # 394 columns: amount, card, address, C/D/M/V features
+    i = _read32(data_dir / "train_identity.csv")      # 41 columns: device type, browser, id_xx
     df = t.merge(i, on="TransactionID", how="left").sort_values("TransactionDT").reset_index(drop=True)
     for c in df.columns:                          # text -> category codes (NaN stays NaN as code -1 -> NaN below)
         if df[c].dtype == object or str(df[c].dtype).startswith(("str", "string")):
@@ -51,13 +58,16 @@ def load(data_dir):
     return df
 
 
+NEW_FEATURES = ["card_start_day", "uid_count", "uid_amt_mean", "amt_vs_uid_mean", "uid_P_email_n", "amt_cents", "hour"]
+
+
 def add_features(df):
     """The famous IEEE-CIS insight: fraud is committed by PEOPLE, so identify the person behind each card.
 
     D1 = days since the card was first used; TransactionDT/86400 - D1 = the day the card started, which is
     constant for one card holder. card1 + addr1 + that start day approximates one client ("uid").
     """
-    out = df.copy()                               # never modify the caller's table
+    out = df                                      # adds columns IN PLACE: a copy of 590k x 434 would not fit in RAM
     day = out["TransactionDT"] / 86400            # transaction day
     out["card_start_day"] = np.floor(day - out["D1"])   # same value for every transaction of one card holder
     part = lambda c: out[c].fillna(-1).astype("int64").astype(str)   # missing -> "-1" (pandas would keep NaN,
@@ -129,11 +139,12 @@ def compare_all(train, test, cols):
     return rows
 
 
-def feature_engineering_gain(train_raw, test_raw, train_fe, test_fe):
-    """XGBoost with and without the client-identification features."""
+def feature_engineering_gain(tr, te):
+    """XGBoost with and without the client-identification features (same rows, different columns)."""
     out = {}                                      # results
-    for name, tr, te in (("raw features", train_raw, test_raw), ("+ client (uid) features", train_fe, test_fe)):
-        cols = features(tr)
+    all_cols = features(tr)                       # everything, including the engineered columns
+    raw_cols = [c for c in all_cols if c not in NEW_FEATURES]   # the original columns only
+    for name, cols in (("raw features", raw_cols), ("+ client (uid) features", all_cols)):
         m = xgb.XGBClassifier(n_estimators=1000, learning_rate=0.05, max_depth=9, subsample=0.8, colsample_bytree=0.5,
                               tree_method="hist", n_jobs=-1, random_state=0).fit(tr[cols], tr["isFraud"])
         s = m.predict_proba(te[cols])[:, 1]       # test probabilities
@@ -171,13 +182,12 @@ def main():
     ap.add_argument("--quick", action="store_true")   # the 30k sample
     args = ap.parse_args()
     OUTPUTS.mkdir(exist_ok=True)                  # outputs/
-    raw = load(SAMPLE_DIR if args.quick else DATA_DIR)   # transactions + identity
-    fe = add_features(raw)                        # + client-identification features
-    tr_raw, te_raw = time_split(raw); tr, te = time_split(fe)   # identical rows in both versions
-    print(f"train {len(tr):,}  test {len(te):,}  fraud rate {raw['isFraud'].mean():.4f}  features {len(features(fe))}")
-    res = {"rows": {"train": len(tr), "test": len(te)}, "fraud_rate": round(float(raw["isFraud"].mean()), 4)}
+    fe = add_features(load(SAMPLE_DIR if args.quick else DATA_DIR))   # transactions + identity + client features
+    tr, te = time_split(fe)                       # past 80% / future 20%
+    print(f"train {len(tr):,}  test {len(te):,}  fraud rate {fe['isFraud'].mean():.4f}  features {len(features(fe))}")
+    res = {"rows": {"train": len(tr), "test": len(te)}, "fraud_rate": round(float(fe["isFraud"].mean()), 4)}
     res["lineup"] = compare_all(tr, te, features(fe))   # 1. every algorithm
-    res["feature_engineering"] = feature_engineering_gain(tr_raw, te_raw, tr, te)   # 2. the uid insight
+    res["feature_engineering"] = feature_engineering_gain(tr, te)   # 2. the uid insight
     print("fe", res["feature_engineering"])
     res["splits"] = random_vs_time(fe)            # 3. validation design
     print("splits", res["splits"])

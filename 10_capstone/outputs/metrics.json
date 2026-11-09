@@ -1,0 +1,97 @@
+{
+  "rows": {
+    "train": 472432,
+    "test": 118108
+  },
+  "fraud_rate": 0.035,
+  "lineup": [
+    {
+      "model": "1 Logistic regression",
+      "train_rows": 472432,
+      "fit_seconds": 119.4,
+      "predict_seconds": 2.7,
+      "roc_auc": 0.8116,
+      "pr_auc": 0.1744
+    },
+    {
+      "model": "2 Linear SVM",
+      "train_rows": 100000,
+      "fit_seconds": 89.1,
+      "predict_seconds": 2.3,
+      "roc_auc": 0.7885,
+      "pr_auc": 0.1751
+    },
+    {
+      "model": "3 Gaussian naive Bayes",
+      "train_rows": 472432,
+      "fit_seconds": 48.0,
+      "predict_seconds": 3.1,
+      "roc_auc": 0.7685,
+      "pr_auc": 0.0946
+    },
+    {
+      "model": "4 KNN (k=25, PCA-30)",
+      "train_rows": 50000,
+      "fit_seconds": 5.0,
+      "predict_seconds": 14.3,
+      "roc_auc": 0.7811,
+      "pr_auc": 0.3575
+    },
+    {
+      "model": "5 Decision tree",
+      "train_rows": 472432,
+      "fit_seconds": 182.8,
+      "predict_seconds": 0.3,
+      "roc_auc": 0.8256,
+      "pr_auc": 0.376
+    },
+    {
+      "model": "6 Random forest",
+      "train_rows": 472432,
+      "fit_seconds": 413.6,
+      "predict_seconds": 3.0,
+      "roc_auc": 0.9021,
+      "pr_auc": 0.4786
+    },
+    {
+      "model": "7 AdaBoost (depth-2)",
+      "train_rows": 100000,
+      "fit_seconds": 568.4,
+      "predict_seconds": 11.5,
+      "roc_auc": 0.8625,
+      "pr_auc": 0.4019
+    },
+    {
+      "model": "8 Hist gradient boosting",
+      "train_rows": 472432,
+      "fit_seconds": 379.8,
+      "predict_seconds": 2.7,
+      "roc_auc": 0.9299,
+      "pr_auc": 0.6154
+    },
+    {
+      "model": "9 XGBoost",
+      "train_rows": 472432,
+      "fit_seconds": 249.2,
+      "predict_seconds": 2.5,
+      "roc_auc": 0.9296,
+      "pr_auc": 0.6216
+    }
+  ],
+  "feature_engineering": {
+    "raw features": {
+      "features": 431,
+      "roc_auc": 0.9172,
+      "pr_auc": 0.5953
+    },
+    "+ client (uid) features": {
+      "features": 438,
+      "roc_auc": 0.9296,
+      "pr_auc": 0.6216
+    }
+  },
+  "splits": {
+    "time split (last 20%)": 0.9296,
+    "random split": 0.975
+  }
+}

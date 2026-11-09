@@ -1,0 +1,27 @@
+D:\AI Projects\ML_Mini_Projects\10_capstone\capstone.py:72: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  out["card_start_day"] = np.floor(day - out["D1"])   # same value for every transaction of one card holder
+D:\AI Projects\ML_Mini_Projects\10_capstone\capstone.py:75: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  out["uid_count"] = uid.map(uid.value_counts()).astype("float32")   # how active this client is
+D:\AI Projects\ML_Mini_Projects\10_capstone\capstone.py:77: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  out["uid_amt_mean"] = grp.transform("mean").astype("float32")    # their usual amount
+D:\AI Projects\ML_Mini_Projects\10_capstone\capstone.py:78: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  out["amt_vs_uid_mean"] = (out["TransactionAmt"] / out["uid_amt_mean"]).astype("float32")   # unusual for them?
+D:\AI Projects\ML_Mini_Projects\10_capstone\capstone.py:79: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  out["uid_P_email_n"] = out.groupby(uid)["P_emaildomain"].transform("nunique").astype("float32")   # e-mails used
+D:\AI Projects\ML_Mini_Projects\10_capstone\capstone.py:80: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  out["amt_cents"] = (out["TransactionAmt"] - np.floor(out["TransactionAmt"])).astype("float32")   # 0.99 vs .00:
+D:\AI Projects\ML_Mini_Projects\10_capstone\capstone.py:81: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  out["hour"] = ((out["TransactionDT"] / 3600) % 24).astype("float32")   # foreign currency conversions show
+train 472,432  test 118,108  fraud rate 0.0350  features 438
+   {'model': '1 Logistic regression', 'train_rows': 472432, 'fit_seconds': 119.4, 'predict_seconds': 2.7, 'roc_auc': 0.8116, 'pr_auc': 0.1744}
+   {'model': '2 Linear SVM', 'train_rows': 100000, 'fit_seconds': 89.1, 'predict_seconds': 2.3, 'roc_auc': 0.7885, 'pr_auc': 0.1751}
+   {'model': '3 Gaussian naive Bayes', 'train_rows': 472432, 'fit_seconds': 48.0, 'predict_seconds': 3.1, 'roc_auc': 0.7685, 'pr_auc': 0.0946}
+   {'model': '4 KNN (k=25, PCA-30)', 'train_rows': 50000, 'fit_seconds': 5.0, 'predict_seconds': 14.3, 'roc_auc': 0.7811, 'pr_auc': 0.3575}
+   {'model': '5 Decision tree', 'train_rows': 472432, 'fit_seconds': 182.8, 'predict_seconds': 0.3, 'roc_auc': 0.8256, 'pr_auc': 0.376}
+   {'model': '6 Random forest', 'train_rows': 472432, 'fit_seconds': 413.6, 'predict_seconds': 3.0, 'roc_auc': 0.9021, 'pr_auc': 0.4786}
+   {'model': '7 AdaBoost (depth-2)', 'train_rows': 100000, 'fit_seconds': 568.4, 'predict_seconds': 11.5, 'roc_auc': 0.8625, 'pr_auc': 0.4019}
+   {'model': '8 Hist gradient boosting', 'train_rows': 472432, 'fit_seconds': 379.8, 'predict_seconds': 2.7, 'roc_auc': 0.9299, 'pr_auc': 0.6154}
+   {'model': '9 XGBoost', 'train_rows': 472432, 'fit_seconds': 249.2, 'predict_seconds': 2.5, 'roc_auc': 0.9296, 'pr_auc': 0.6216}
+fe {'raw features': {'features': 431, 'roc_auc': 0.9172, 'pr_auc': 0.5953}, '+ client (uid) features': {'features': 438, 'roc_auc': 0.9296, 'pr_auc': 0.6216}}
+splits {'time split (last 20%)': 0.9296, 'random split': 0.975}
+saved to D:\AI Projects\ML_Mini_Projects\10_capstone\outputs

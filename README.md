@@ -1,6 +1,6 @@
 # Machine Learning Mini Projects
 
-Ten hands-on projects, one per supervised ML algorithm (course sections 30-38 plus a capstone), each on a
+Ten hands-on projects (all complete), one per supervised ML algorithm (course sections 30-38 plus a capstone), each on a
 **real, large, well-known dataset**: no toy data. The goal is to go from "I know the maths and the intuition" to
 "I can write it myself".
 
@@ -19,7 +19,7 @@ tests pass, and every project includes one algorithm built from scratch in NumPy
 | 7 | AdaBoost | HIGGS (11M collisions, UCI) | **Done**: AUC 0.785; physics features 0.757 vs raw 0.620 |
 | 8 | Gradient Boosting | Rossmann store sales (1M store-days) | **Done**: RMSPE 0.121 vs 0.145 baseline; histograms 9x faster |
 | 9 | XGBoost | Home Credit Default Risk (307k applicants, 7 tables) | **Done**: AUC 0.790; history +0.020; flags gender as a fairness problem |
-| 10 | Capstone: all algorithms | IEEE-CIS Fraud Detection (590k) | Built and tested; full run pending |
+| 10 | Capstone: all 9 algorithms | IEEE-CIS Fraud Detection (590k) | **Done**: XGBoost AUC 0.930; random split overstates (0.975) |
 
 ## Setup (already done on this machine)
 
